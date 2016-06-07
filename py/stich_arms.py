@@ -22,54 +22,22 @@ def stitch_spectra(list_of_paths):
         if "UVB" in ii:
             mask = (wl >= 3050) & (wl <= 5600)
             arm.append("UVB")
-
-            sky_model = np.genfromtxt('data/UVB_sky.dat', dtype=None)
-            trans_model = np.genfromtxt('data/UVB_trans.dat', dtype=None)
-            wl_sky = 10.* sky_model[:,0]
-            flux_sky = sky_model[:,1]
-            trans = np.ones_like(trans_model[:,1])
-
         elif "VIS" in ii:
             mask = (wl >= 5600) & (wl <= 10100)
             arm.append("VIS")
-            sky_model = np.genfromtxt('data/VIS_sky.dat', dtype=None)
-            trans_model = np.genfromtxt('data/VIS_trans.dat', dtype=None)
-            wl_sky = 10.* sky_model[:,0]
-            flux_sky = sky_model[:,1]
-            trans = trans_model[:,1]
-
         elif "NIR" in ii:
             mask = (wl >= 10100) & (wl <= 24000)
             arm.append("NIR")
-            sky_model = np.genfromtxt('data/NIR_sky.dat', dtype=None)
-            trans_model = np.genfromtxt('data/NIR_trans.dat', dtype=None)
-            wl_sky = 10.* sky_model[:,0]
-            flux_sky = sky_model[:,1]
-            trans = trans_model[:,1]
-
         wl = wl[mask]
-        from scipy import interpolate
-        f = interpolate.interp1d(wl_sky, trans, kind='linear', bounds_error = False, fill_value=1)
-        g = interpolate.interp1d(wl_sky, flux_sky, kind='linear', bounds_error = False, fill_value=1)
-        trans = f(wl)
-        from scipy.signal import savgol_filter
-        flux_sky = savgol_filter(g(wl), 21, 3)
-        # pl.plot(wl, trans)
-        # pl.plot(wl, g(wl))
-        # pl.show()
-
 
         flux = dataframe[:, 1][mask] #/ trans
         fluxerror = dataframe[:, 2][mask] #/ trans
         bpmap = np.zeros_like(flux)
-        bpmap[flux_sky > 5000] = 10000
-        bpmap[f(wl) < 0.7] = 20000
 
         concatenated_wl.append(wl)
         concatenated_spec.append(flux)
         concatenated_specerr.append(fluxerror)
         concatenated_bpmap.append(bpmap)
-        # concatenated_normerr.append(normerror)
 
         from numpy.polynomial import chebyshev
         mask = np.isnan(flux)

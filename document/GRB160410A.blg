@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: GRB160410A.aux
+The style file: mnras.bst
+Database file #1: /Users/jselsing/Work/Papers/bibtex/GRB160410A.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 11 entries,
+            2881 wiz_defined-function locations,
+            832 strings with 29505 characters,
+and the built_in function-call counts, 5116 in all, are:
+= -- 446
+> -- 358
+< -- 14
++ -- 148
+- -- 56
+* -- 643
+:= -- 796
+add.period$ -- 0
+call.type$ -- 11
+change.case$ -- 22
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 241
+empty$ -- 243
+format.name$ -- 88
+if$ -- 889
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 11
+newline$ -- 46
+num.names$ -- 66
+pop$ -- 47
+preamble$ -- 1
+purify$ -- 44
+quote$ -- 0
+skip$ -- 142
+stack$ -- 0
+substring$ -- 342
+swap$ -- 96
+text.length$ -- 44
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 99
+warning$ -- 0
+while$ -- 78
+width$ -- 0
+write$ -- 122

@@ -1,0 +1,80 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{Berger, Fong  \& Chornock}{Berger
+  et~al.}{2013}]{Berger2013}
+Berger E.,  Fong W.,   Chornock R.,  2013, \mn@doi [The Astrophysical Journal]
+  {10.1088/2041-8205/774/2/L23}, 774, L23
+
+\bibitem[\protect\citeauthoryear{Freudling, Romaniello, Bramich, Ballester,
+  Forchi, Garc{\'{i}}a-Dabl{\'{o}}, Moehler  \& Neeser}{Freudling
+  et~al.}{2013}]{Freudling2013}
+Freudling W.,  Romaniello M.,  Bramich D.~M.,  Ballester P.,  Forchi V.,
+  Garc{\'{i}}a-Dabl{\'{o}} C.~E.,  Moehler S.,   Neeser M.~J.,  2013, \mn@doi
+  [Astronomy {\&} Astrophysics] {10.1051/0004-6361/201322494}, 559, A96
+
+\bibitem[\protect\citeauthoryear{Gehrels et~al.,}{Gehrels
+  et~al.}{2004}]{Gehrels2004}
+Gehrels N.,  et~al., 2004, \mn@doi [The Astrophysical Journal]
+  {10.1086/422091}, 611, 1005
+
+\bibitem[\protect\citeauthoryear{Hamuy, Suntzeff, Heathcote, Walker, Gigoux  \&
+  Phillips}{Hamuy et~al.}{1994}]{Hamuy1994}
+Hamuy M.,  Suntzeff N.~B.,  Heathcote S.~R.,  Walker A.~R.,  Gigoux P.,
+  Phillips M.~M.,  1994, \mn@doi [Publications of the Astronomical Society of
+  the Pacific] {10.1086/133417}, 106, 566
+
+\bibitem[\protect\citeauthoryear{LVC16a et~al.,}{LVC16a
+  et~al.}{2016}]{Abbott2016}
+LVC16a et~al., 2016, \mn@doi [Physical Review Letters]
+  {10.1103/PhysRevLett.116.061102}, 116, 061102
+
+\bibitem[\protect\citeauthoryear{Modigliani et~al.,}{Modigliani
+  et~al.}{2010}]{Modigliani2010}
+Modigliani A.,  et~al., 2010, \mn@doi [SPIE Astronomical Telescopes +
+  Instrumentation] {10.1117/12.857211}, 7737, 773728
+
+\bibitem[\protect\citeauthoryear{Norris, Gehrels  \& Scargle}{Norris
+  et~al.}{2011}]{Norris2011}
+Norris J.~P.,  Gehrels N.,   Scargle J.~D.,  2011, \mn@doi [The Astrophysical
+  Journal] {10.1088/0004-637X/735/1/23}, 735, 23
+
+\bibitem[\protect\citeauthoryear{Tanvir, Levan, Fruchter, Hjorth, Hounsell,
+  Wiersema  \& Tunnicliffe}{Tanvir et~al.}{2013}]{Tanvir2013}
+Tanvir N.~R.,  Levan a.~J.,  Fruchter a.~S.,  Hjorth J.,  Hounsell R.~a.,
+  Wiersema K.,   Tunnicliffe R.~L.,  2013, \mn@doi [Nature]
+  {10.1038/nature12505}, 500, 547
+
+\bibitem[\protect\citeauthoryear{{Tepper Garc{\'{i}}a}}{{Tepper
+  Garc{\'{i}}a}}{2006}]{TepperGarcia2006}
+{Tepper Garc{\'{i}}a} T.,  2006, \mn@doi [Monthly Notices of the Royal
+  Astronomical Society] {10.1111/j.1365-2966.2006.10450.x}, 369, 2025
+
+\bibitem[\protect\citeauthoryear{Vernet et~al.,}{Vernet
+  et~al.}{2009}]{Vernet2010}
+Vernet J.,  et~al., 2009, \mn@doi [Proceedings of the International
+  Astronomical Union] {10.1017/S1743921310010574}, 5, 535
+
+\bibitem[\protect\citeauthoryear{Vernet et~al.,}{Vernet
+  et~al.}{2011}]{Vernet2011}
+Vernet J.,  et~al., 2011, \mn@doi [Astronomy {\&} Astrophysics]
+  {10.1051/0004-6361/201117752}, 536, A105
+
+\makeatother
+\end{thebibliography}
