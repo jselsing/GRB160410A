@@ -174,6 +174,10 @@ The Burst Alert Telescope (BAT) onboard the \textit{Swift} space telescope
 \citep{Gehrels2004} triggered on a source on the 10th of April, 2016 at
 05:09:48.05 UT. \cite{Norris2011}
 
+\subsection{Photometric host-search}
+
+
+
 
 \subsection{X-shooter observations}
 
@@ -349,33 +353,134 @@ Try to keep it short.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \appendix
 
-\section{Lyman-$\alpha$ column density}
+\section{Continuum model}
+The optical- and near-infrared continuum of GRB afterglows can be described by a single power law, owing to the continuum generation by syncrotron radiation in the forward shock of the ejected material \citep{Piran2004, Kumar2015},
+
+\begin{equation} 
+S_\lambda = S_{0} \lambda^{-\beta},
+\end{equation}
+where $S_0$ is an arbitrary scaling factor for the flux density and $\beta$ is the power-law slope, both free parameters. 
+Additionally, light is attenuated by the presence dust particles which preferentially absorbs shorter wavelength photons, where the detailed dependence is set by the composition of the dust grains. Extinction curves have been parametrized in terms of various shape parameters. We use the parametrization by \citet{Fitzpatrick2007} with the values of SMC-like dust \citep{Gordon2003} for our initial guess, based on the prevalence of SMC-like dust in GRB host galaxies \citep{Japelj2015},
+
+\begin{equation} 
+S_\lambda = S_\lambda^*   10 ^{-0.4 E(B-V)[k(\lambda - V) + R_V]},
+\end{equation}
+where $S_\lambda^*$ is again the unreddened flux value, $E(B-V)$ is the color excess, $R_V$ is the total to selective extinction, meaning how many mangitudes absorption per color excess, and $k(\lambda - V)$ is the wavelength dependent extinction curve,
+
+\begin{equation} 
+k(\lambda - V)
+\begin{cases}
+c_1 + c_2 x + c3 \frac{x^2}{(x - x_0)^2 + x^2 \gamma^2},&  x\leq c_5,\\
+c_1 + c_2 x + c3 \frac{x^2}{(x - x_0)^2 + x^2 \gamma^2} + c_4(x - c_5)^2, &  x > c_5,
+\end{cases}
+\end{equation}
+where $x \equiv \lambda^{-1}$ and the rest, $c_1$ through $c_5$ are shape parameters for the extinction curve \citep{Fitzpatrick2007}. 
+
+The continuum level emission will therefore by the product of the intrinsic power-law shape, absorbed by some extinction curve. 
+
+
+
+\section{Lyman-$\alpha$ column density} \label{app_absorp}
 
 The background continuum experiences absorption by intervening material, the
 strength of which depends on specifics about the absorbing material as well as
 the abundance of it. The change in flux observed as the light travels through a
 cloud of material is given by the solution to the equation of radiative transfer without emissivity
 \begin{equation}
-I_\lambda = I_\lambda^* \  e^{ - \sigma_{\lambda} N_j}, 
+S_\lambda = S_\lambda^* \  e^{ - \sigma_{\lambda} N_j}, 
 \end{equation} 
-where $I_\lambda^*$ is the incident flux, $I_\lambda$ is the resulting flux,
+where $S_\lambda^*$ is the incident flux, $S_\lambda$ is the resulting flux,
 $\sigma_{\lambda}$ is the wavelength dependent, transition-specific cross
 section and $N_j$ is the column density of the absorbable species in state j 
 (the state number-density $n_j$ intergrated over the entire line of sight,
 $ds$). Therefore the strength of absorption is directly related to the column of
 material that we see through. The exponent equals the optical depth,
 $\tau_\lambda$, and gives the probability that a photon with a given wavelength
-is absorbed. 
+is absorbed. The wavelength-dependent atomic absorbtion cross-section,
+$\sigma_{\lambda}$, is composed of two parts; the integrated transition
+cross-section, $\sigma_{jk} = \int_{0}^{\infty} \sigma_{\lambda} d\lambda$ for
+the transition from state $j$ to state $k$ and the line shape profile $\phi_\lambda$,
+which reflects the probability of a photon being absorbed at a given wavelength.
+$\sigma_{jk}$ can be calculated from considering the Hamiltonian of the photon -
+atom interaction and when disregarding stimulated emission and it is set by the
+oscillator strength of the transition, $f_{jk}$, the elementary charge, $e$, and the mass of
+the electron, $m_e$, - quantities independent of the environments in which the
+absorption takes place,
+\begin{equation} 
+\sigma_{jk} = \int_{0}^{\infty} \sigma_{\lambda} d\lambda = \frac{\pi  e^2}{m_e c} f_{jk}.
+ \end{equation}
+Several processes broaden the probability distribution of absorption and
+consists of classes, inherently either Lorentzian of Gaussian in shape. The sum
+of broadening mechanisms can be parametrized by the convolution of the Gaussian
+with the Lorentzian profile, called the Voigt profile ,$V(\lambda, \sigma,
+\gamma)$. This profile is specified by the respective widths, $\sigma$ for the
+Gaussian and $\gamma$ for the Lorentzian. At the densities considered for the
+absorption, the natural line broadening mechanism dominates the Lorentzian width
+and is given by $\gamma = \sum\limits_{j<k} A_{jk},$ and is thus specified by
+specifics of the transition, leaving only the Gaussian width and the column
+density to control the absorption-probability. The absorption signature in a
+continuum due to a single atomic transition can thusly be parametrized as
 
+\begin{equation} 
+S_\lambda = S_\lambda^* \  e^{ - \frac{\pi  e^2}{m_e c} f_{jk} \lambda_{jk} V(\lambda, \sigma, \gamma)  N_j}, 
+\end{equation}
+where only $N_j$, and $\sigma$ are free parameters, the rest are specified by the continuum level, $S_\lambda^*$, transition \citep{TepperGarcia2006}.
 
-Following \citet{TepperGarcia2006}, the probability is given
 
 \section{Likelihood model}
 
+We are interested in exploring the underlying physical parameters that we believe generate our data. In the case of absorption lines, we believe that the column density of the material and the turbulent motion of the gas are the scalar variables that are sufficient to accurately generate the line shape, see \ref{app_absorp}. What we want to quantify is the range of parameter values that, within measurement uncertainties, contain the true physical parameter value. For each spectral point we have for the GRB afterglow, we believe there is an underlying model that can generate that specific data point, $f(\lambda_i, \theta)$, where $\theta$ is the parameters of the model. Following \citet{Hogg2010}, we state a \textit{generative model} for the data, where each data point, $S_{i \lambda}$,  and associated error, $\delta S_{i \lambda}$,  is seen as a normally distributed probability distribution function with the data value being the mean and the y-error, the 1-$\sigma$ width. If we wanted to repeat the measurement, we could resample the entire spectrum where for each point, the value is drawn from the probability distribution function defined by the current measurements. Using our generative model, each data point $(\lambda, S_{i \lambda},\delta S_{i \lambda} )$ has a conditional probability
 
+
+\begin{equation} 
+p(\lambda_i, I(\lambda)_{i} | \theta,  \delta S_{i \lambda})  
+=   \frac{1}{\sqrt{2 \pi \delta S_{i \lambda}^2 }}  exp \left(   - \frac{[S_{i \lambda} - f(\lambda, \theta)]^2}{2 \delta S_{i \lambda}^2}    \right),
+\end{equation}
+where $f(\lambda, \theta)$ is the physical underlying model for the data
+\begin{equation} 
+f(\lambda, \theta)
+=   S_{0} \lambda^{-\beta} \prod_{t=i}^{k} e^{ - \frac{\pi  e^2}{m_e c} f_{t} \lambda_{t} V(\lambda, \sigma, \gamma)  N_t}  10 ^{-0.4 E(B-V)[k(\lambda - V) + R_V]}.
+\end{equation}
+Here the product is over all absorption lines included in the fit, one component for each transition modeled marked by the subscript, $t$, up to any value $k$. 
+
+\section{The complex error function and the Voigt profile}
+As part of the evaluation of the likelihood function we need to evaluate the Voigt-profile. The Voigt profile, which is the convolution of the Gaussian and Lorentzian profiles, can, centered at zero, be written as \citep{pagnini2010} 
+\begin{equation} 
+	\begin{split}
+		V(\lambda,\sigma, \gamma)  
+		& = G(\lambda, \sigma)  \otimes L(\lambda, \gamma) \\
+		& = \int_{-\infty}^{\infty} G(\xi, \sigma) L(\lambda - \xi, \gamma) d\xi \\
+		& = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi} \sigma} e^{- \left( \frac{\xi}{\sqrt{2} \sigma}  \right)^2 } \frac{1}{\gamma \pi} \frac{\gamma^2}{(\lambda - \xi)^2 + \gamma^2} d\xi \\
+		& = \frac{\gamma}{\sqrt{2} \sigma} \frac{1}{ \pi^{3/2}}   \int_{-\infty}^{\infty} \frac{e^{- \left( \frac{\xi}{\sqrt{2} \sigma}  \right)^2 }}{(\lambda - \xi)^2 + \gamma^2}.
+	\end{split}
+\end{equation}
+We can by making the following substitution, $\xi = \sqrt{2} \sigma$ and $d\xi = \sqrt{2} \sigma dt$, write it as
+\begin{equation} 
+	\begin{split}
+		V(\lambda,\sigma, \gamma)  
+		& =  \frac{\sqrt{2} \sigma}{ \sqrt{{\pi}}} \frac{\frac{\gamma}{\sqrt{2} \sigma}}{\pi}  \int_{-\infty}^{\infty} \frac{e^{- t^2 }}{(\lambda - \sqrt{2} \sigma t)^2 + \gamma^2} dt \\
+		& = \frac{1}{\sqrt{2 \pi} \sigma}  \frac{\frac{\gamma}{\sqrt{2} \sigma}}{\pi}  \int_{-\infty}^{\infty} \frac{e^{- t^2 }}{\left(\frac{\lambda}{\sqrt{2} \sigma} -  t\right)^2 + \left(\frac{\gamma}{\sqrt{2} \sigma}\right)^2} dt.	
+	\end{split}
+\end{equation}
+This form of the convolution is closely related to the complex probability function \citep{letchworth2007, abrarov2015a},
+\begin{equation} 
+	\begin{split}
+		W(z)  
+		& = \frac{i}{\pi} \int_{-\infty}^{\infty} \frac{e^{-t^2}}{z - t}  
+	\end{split}
+\end{equation}
+for any complex argument, $z = x + iy$. The complex probability function can be expressed as a sum of a real an imaginary part \citep{benner1995, abrarov2015b},
+\begin{equation} 
+	\begin{split}
+		W(x, y)  
+		& = K(x, y) + i L(x, y) \\
+		& = \frac{y}{\pi}  \int_{-\infty}^{\infty} \frac{e^{- t^2 }}{(x -  t)^2 +y^2} dt  + \frac{i}{\pi}  \int_{-\infty}^{\infty} \frac{(x - t)e^{- t^2 }}{(x -  t)^2 +y^2} dt,
+	\end{split}
+\end{equation}
+where is the real part, $\mathtt{Re}[W(x, y)] =  \sqrt{2 \pi} \sigma V(\lambda,\sigma, \gamma)$ if $x = \frac{\lambda}{\sqrt{2} \sigma}$ and $y = \frac{\gamma}{\sqrt{2} \sigma}$, which can be obtained by using the complex argument, $z = \frac{\lambda + i\gamma}{\sqrt{2} \sigma}$, in the complex probability function. If $\mathtt{Im}[z] \geq 0$, which is always guaranteed for the width of a spectral profile, the complex probability function equals the complex error function. The complex error function has numerous, fast, numerical approximations where in this work we use the \texttt{scipy.special.wofz} \citep{scipy} implementation.
 
 
 
