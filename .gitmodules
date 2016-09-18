@@ -1,3 +1,3 @@
-[submodule "documents"]
-	path = documents
+[submodule "GRB160410A_paper"]
+	path = GRB160410A_paper
 	url = https://git.overleaf.com/6250464jtthhq
