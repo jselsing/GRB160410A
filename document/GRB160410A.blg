@@ -3,46 +3,58 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: GRB160410A.aux
 The style file: mnras.bst
 Database file #1: /Users/jselsing/Work/Papers/bibtex/GRB160410A.bib
+Repeated entry---line 380 of file /Users/jselsing/Work/Papers/bibtex/GRB160410A.bib
+ : @article{pagnini2010
+ :                     ,
+I'm skipping whatever remains of this entry
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 11 entries,
+"ArXiv e-prints" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Hogg2010
+while executing---line 1822 of file mnras.bst
+Warning--empty journal in Hogg2010
+"ArXiv e-prints" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Hogg2010
+while executing---line 1822 of file mnras.bst
+You've used 23 entries,
             2881 wiz_defined-function locations,
-            832 strings with 29505 characters,
-and the built_in function-call counts, 5116 in all, are:
-= -- 446
-> -- 358
-< -- 14
-+ -- 148
-- -- 56
-* -- 643
-:= -- 796
+            928 strings with 32694 characters,
+and the built_in function-call counts, 10954 in all, are:
+= -- 963
+> -- 767
+< -- 50
++ -- 326
+- -- 114
+* -- 1331
+:= -- 1708
 add.period$ -- 0
-call.type$ -- 11
-change.case$ -- 22
-chr.to.int$ -- 11
-cite$ -- 11
-duplicate$ -- 241
-empty$ -- 243
-format.name$ -- 88
-if$ -- 889
-int.to.chr$ -- 1
+call.type$ -- 23
+change.case$ -- 46
+chr.to.int$ -- 22
+cite$ -- 24
+duplicate$ -- 512
+empty$ -- 506
+format.name$ -- 196
+if$ -- 1910
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 46
-num.names$ -- 66
-pop$ -- 47
+missing$ -- 22
+newline$ -- 82
+num.names$ -- 156
+pop$ -- 94
 preamble$ -- 1
-purify$ -- 44
+purify$ -- 92
 quote$ -- 0
-skip$ -- 142
+skip$ -- 314
 stack$ -- 0
-substring$ -- 342
-swap$ -- 96
-text.length$ -- 44
+substring$ -- 740
+swap$ -- 246
+text.length$ -- 92
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 99
-warning$ -- 0
-while$ -- 78
+type$ -- 207
+warning$ -- 1
+while$ -- 167
 width$ -- 0
-write$ -- 122
+write$ -- 240
+(There were 3 error messages)
