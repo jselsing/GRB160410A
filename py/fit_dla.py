@@ -151,7 +151,7 @@ def residual(pars, t, data=None, error=None):
 
 
 def main():
-    data = np.genfromtxt("data/GRB160410A_bin10.dat")
+    data = np.genfromtxt("data/stitched_spectrum_bin10.dat")
     wl, flux, error = data[:, 0], data[:, 1], data[:, 2]
     mask = ~(np.isnan(flux) | np.isinf(flux) | np.isnan(error) | np.isinf(error) | np.isnan(1/error**2) | np.isinf(1/error**2))
     error[error < 1e-25] = 1e-17
@@ -162,7 +162,7 @@ def main():
     # pl.show()
     # exit()
 
-    data = np.genfromtxt("data/GRB160410A_bin10.dat")
+    data = np.genfromtxt("data/stitched_spectrum.dat")
     wl, flux, error = data[:, 0], data[:, 1], data[:, 2]
     mask = ~(np.isnan(flux) | np.isinf(flux) | np.isnan(error) | np.isinf(error) | np.isnan(1/error**2) | np.isinf(1/error**2))
     error[error < 1e-25] = 1e-17
@@ -173,7 +173,7 @@ def main():
                ('slope_pow',       -2.38, True, -3, -2),
                ('N',                  20, True, 18, 22),
                ('sigma',             200, True, 0),
-               ('z',               1.716, True, 1.5, 2.0),
+               ('z',               1.716, True, 1.70, 1.73),
                ('ebv',               0.0, True, 0),
                ('f',               0.416, False),
                ('lambda_zero', 1215.6701, False),
@@ -182,10 +182,10 @@ def main():
 
     mi = lmfit.minimize(residual, p, method='Nelder', args=(wl, flux, error))
     print(lmfit.report_fit(mi.params))
-    pl.plot(wl, residual(mi.params.valuesdict().values(), wl), lw = 3, color=cmap[2], zorder=2)
-    pl.ylim((-1e-18, 1e-16))
-    pl.show()
-    exit()
+    # pl.plot(wl, residual(mi.params.valuesdict().values(), wl), lw = 3, color=cmap[2], zorder=2)
+    # pl.ylim((-1e-18, 1e-16))
+    # pl.show()
+    # exit()
 
     def lnprob(pars):
         """

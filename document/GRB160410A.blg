@@ -2,9 +2,9 @@ This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: GRB160410A.aux
 The style file: mnras.bst
-Database file #1: /Users/jselsing/Work/Papers/bibtex/GRB160410A.bib
-Repeated entry---line 380 of file /Users/jselsing/Work/Papers/bibtex/GRB160410A.bib
- : @article{pagnini2010
+Database file #1: GRB160410A.bib
+Repeated entry---line 289 of file GRB160410A.bib
+ : @article{Pagnini2010
  :                     ,
 I'm skipping whatever remains of this entry
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -18,7 +18,7 @@ Warning--empty journal in Hogg2010
 while executing---line 1822 of file mnras.bst
 You've used 23 entries,
             2881 wiz_defined-function locations,
-            928 strings with 32694 characters,
+            927 strings with 32649 characters,
 and the built_in function-call counts, 10954 in all, are:
 = -- 963
 > -- 767
