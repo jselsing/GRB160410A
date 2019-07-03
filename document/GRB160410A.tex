@@ -436,6 +436,8 @@ f(\lambda, \theta)
 \end{equation}
 Here the product is over all absorption lines included in the fit, one component for each transition modeled marked by the subscript, $t$, up to any value $k$. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{The complex error function and the Voigt profile}
 As part of the evaluation of the likelihood function we need to evaluate the Voigt-profile. The Voigt profile, which is the convolution of the Gaussian and Lorentzian profiles, can, centered at zero, be written as \citep{pagnini2010} 
 \begin{equation} 
@@ -471,8 +473,6 @@ for any complex argument, $z = x + iy$. The complex probability function can be 
 	\end{split}
 \end{equation}
 where is the real part, $\mathtt{Re}[W(x, y)] =  \sqrt{2 \pi} \sigma V(\lambda,\sigma, \gamma)$ if $x = \frac{\lambda}{\sqrt{2} \sigma}$ and $y = \frac{\gamma}{\sqrt{2} \sigma}$, which can be obtained by using the complex argument, $z = \frac{\lambda + i\gamma}{\sqrt{2} \sigma}$, in the complex probability function. If $\mathtt{Im}[z] \geq 0$, which is always guaranteed for the width of a spectral profile, the complex probability function equals the complex error function. The complex error function has numerous, fast, numerical approximations where in this work we use the \texttt{scipy.special.wofz} \citep{scipy} implementation.
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

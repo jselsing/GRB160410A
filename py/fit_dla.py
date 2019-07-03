@@ -162,7 +162,7 @@ def main():
     # pl.show()
     # exit()
 
-    data = np.genfromtxt("data/stitched_spectrum.dat")
+    data = np.genfromtxt("data/stitched_spectrum_bin10.dat")
     wl, flux, error = data[:, 0], data[:, 1], data[:, 2]
     mask = ~(np.isnan(flux) | np.isinf(flux) | np.isnan(error) | np.isinf(error) | np.isnan(1/error**2) | np.isinf(1/error**2))
     error[error < 1e-25] = 1e-17
@@ -220,14 +220,16 @@ def main():
     pl.plot(wl, residual(res.params.valuesdict().values(), wl), lw = 1, color=cmap[2], zorder=3)
     pl.fill_between(wl, residual(low, wl), residual(high, wl), alpha=0.5, color=cmap[2], zorder=2)
     # pl.plot(wl, residual(high, wl), lw = 3, linestyle="dashed")
-    pl.xlim(3200, 3500)
+    pl.xlim(3200, 6000)
     pl.ylim(-1e-18, 1.5e-16)
+    pl.xlabel(r"Wavelength / [$\mathrm{\AA}$]")
+    pl.ylabel(r'Flux density [erg s$^{-1}$ cm$^{-1}$ $\AA^{-1}$]')
     pl.savefig("figs/DLA_fit_zoom.pdf")
     pl.xlim(3200, 10000)
     pl.ylim(-1e-18, 1.5e-16)
     pl.savefig("figs/DLA_fit.pdf")
     pl.clf()
-
+    # exit()
     from matplotlib.ticker import MaxNLocator
     fig, axes = pl.subplots(6, 1, sharex=True, figsize=(8, 9))
     axes[0].plot(res.chain[:, :, 0].T, color="k", alpha=0.4)
